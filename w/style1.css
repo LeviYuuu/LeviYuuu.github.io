@@ -38,6 +38,36 @@ a:hover {
     display: block; /* 消除图片底部的间隙 */
 }
 
+/* 画作条目样式 */
+.entry {
+    background: rgb(0 0 0 / 25%);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+    word-wrap: break-word;
+}
+
+.entry h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.entry p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* 画作图片样式 */
+.painting-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
 /* 页面主体样式 */
 section.diary {
     position: relative;

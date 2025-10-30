@@ -127,7 +127,7 @@ $('#switchmore').on('click', function () {
     } else {
         $('#container').attr('class', 'container');
         $("#change").html("LEVI&nbsp;");
-        $("#change1").html("这世界瞬息万变, 总有一刻我们心脏相连。");
+        $("#change1").html("如果泪水比爱多我们就一起看海");
     }
 });
 

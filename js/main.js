@@ -1,3 +1,4 @@
+var hello = "你好";
 //弹窗样式
 iziToast.settings({
     timeout: 10000,
@@ -45,19 +46,15 @@ window.addEventListener('load', function () {
     $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
 
     //用户欢迎
-    setTimeout(function () {
-        iziToast.show({
-            timeout: 2500,
-            icon: false,
-            title: hello,
-            message: '欢迎来看 关于yuuu和levi。'
-        });
-    }, 800);
+    // setTimeout(function () {
+    //     iziToast.show({
+    //         timeout: 2500,
+    //         icon: false,
+    //         title: hello,
+    //         message: '欢迎来看 关于yuuu和levi。'
+    //     });
+    // }, 800);
 
-    //延迟加载音乐播放器
-    let element = document.createElement("script");
-    element.src = "./js/music.js";
-    document.body.appendChild(element);
 
     //中文字体缓加载-此处写入字体源文件 （暂时弃用）
     //先行加载简体中文子集，后续补全字集
@@ -146,7 +143,12 @@ function getWeather() {
         .catch(console.error);
 }
 
-getWeather();
+let city = '未知';
+$('#city_text').html(city);
+$('#wea_text').html('天气加载已关闭');
+$('#tem_text').html('--°C');
+$('#win_text').html('--');
+$('#win_speed').html('--');
 
 let wea = 0;
 $('#upWeather').click(function () {

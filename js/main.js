@@ -45,27 +45,16 @@ window.addEventListener('load', function () {
     $('.cover').css("cssText", "opacity: 1;transition: ease 1.5s;");
     $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
 
-    //用户欢迎
-    // setTimeout(function () {
-    //     iziToast.show({
-    //         timeout: 2500,
-    //         icon: false,
-    //         title: hello,
-    //         message: '欢迎来看 关于yuuu和levi。'
-    //     });
-    // }, 800);
+    用户欢迎
+    setTimeout(function () {
+        iziToast.show({
+            timeout: 2500,
+            icon: false,
+            title: hello,
+            message: '欢迎来看 关于yuuu和levi。'
+        });
+    }, 800);
 
-
-    //中文字体缓加载-此处写入字体源文件 （暂时弃用）
-    //先行加载简体中文子集，后续补全字集
-    //由于压缩过后的中文字体仍旧过大，可转移至对象存储或 CDN 加载
-    // const font = new FontFace(
-    //     "MiSans",
-    //     "url(" + "./font/MiSans-Regular.woff2" + ")"
-    // );
-    // document.fonts.add(font);
-
-    //移动端去除鼠标样式
     if (Boolean(window.navigator.userAgent.match(/AppWebKit.*Mobile.*/))) {
         $('#g-pointer-2').css("display", "none");
     }
@@ -76,17 +65,6 @@ setTimeout(function () {
     $('#loading-text').html("字体及文件加载可能需要一定时间喵")
 }, 3000);
 
-// 新春灯笼 （ 需要时可取消注释 ）
-// new_element=document.createElement("link");
-// new_element.setAttribute("rel","stylesheet");
-// new_element.setAttribute("type","text/css");
-// new_element.setAttribute("href","./css/lantern.css");
-// document.body.appendChild(new_element);
-
-// new_element=document.createElement("script");
-// new_element.setAttribute("type","text/javascript");
-// new_element.setAttribute("src","./js/lantern.js");
-// document.body.appendChild(new_element);
 
 let isShowingDays = false; // 新增变量来跟踪当前显示状态
 let daysDiff = 0; // 用于存储计算的天数
@@ -108,71 +86,6 @@ $('#hitokoto').click(function () {
     }
 
     isShowingDays = !isShowingDays; // 切换状态
-});
-
-
-
-//获取天气
-//请前往 https://www.mxnzp.com/doc/list 申请 app_id 和 app_secret
-//请前往 https://dev.qweather.com/ 申请 key
-const add_id = "vcpmlmqiqnjpxwq1"; // app_id
-const app_secret = "PeYnsesgkmK7qREhIFppIcsoN0ZShv3c"; // app_secret
-const key = "691d007d585841c09e9b41e79853ecc2" // key
-function getWeather() {
-    fetch("https://www.mxnzp.com/api/ip/self?app_id=" + add_id + "&app_secret=" + app_secret)
-        .then(response => response.json())
-        .then(data => {
-            let str = data.data.city
-            let city = str.replace(/市/g, '')
-            console.log(data, "sssss")
-            $('#city_text').html(city);
-            fetch("https://geoapi.qweather.com/v2/city/lookup?location=" + city + "&number=1&key=" + key)
-                .then(response => response.json())
-                .then(location => {
-                    let id = location.location[0].id
-                    fetch("https://devapi.qweather.com/v7/weather/now?location=" + id + "&key=" + key)
-                        .then(response => response.json())
-                        .then(weather => {
-                            $('#wea_text').html(weather.now.text)
-                            $('#tem_text').html(weather.now.temp + "°C&nbsp;")
-                            $('#win_text').html(weather.now.windDir)
-                            $('#win_speed').html(weather.now.windScale + "级")
-                        })
-                })
-        })
-        .catch(console.error);
-}
-
-let city = '未知';
-$('#city_text').html(city);
-$('#wea_text').html('天气加载已关闭');
-$('#tem_text').html('--°C');
-$('#win_text').html('--');
-$('#win_speed').html('--');
-
-let wea = 0;
-$('#upWeather').click(function () {
-    if (wea == 0) {
-        wea = 1;
-        let index = setInterval(function () {
-            wea--;
-            if (wea == 0) {
-                clearInterval(index);
-            }
-        }, 60000);
-        getWeather();
-        iziToast.show({
-            timeout: 2000,
-            icon: "fa-solid fa-cloud-sun",
-            message: '实时天气已更新'
-        });
-    } else {
-        iziToast.show({
-            timeout: 1000,
-            icon: "fa-solid fa-circle-exclamation",
-            message: '请稍后再更新哦'
-        });
-    }
 });
 
 //获取时间
@@ -201,33 +114,6 @@ function time() {
     }
     $("#time").html(y + "&nbsp;年&nbsp;" + mm + "&nbsp;月&nbsp;" + d + "&nbsp;日&nbsp;" + "<span class='weekday'>" + weekday[day] + "</span><br>" + "<span class='time-text'>" + h + ":" + m + ":" + s + "</span>");
     t = setTimeout(time, 1000);
-}
-
-
-
-//自动变灰
-let myDate = new Date;
-let mon = myDate.getMonth() + 1;
-let date = myDate.getDate();
-let days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
-for (let day of days) {
-    let d = day.split('.');
-    if (mon == d[0] && date == d[1]) {
-        document.write(
-            '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
-        );
-        $("#change").html("Silence&nbsp;in&nbsp;silence");
-        $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
-        window.addEventListener('load', function () {
-            setTimeout(function () {
-                iziToast.show({
-                    timeout: 14000,
-                    icon: "fa-solid fa-clock",
-                    message: '今天是中国国家纪念日'
-                });
-            }, 3800);
-        }, false);
-    }
 }
 
 //更多页面切换

@@ -36,8 +36,6 @@
 
     <!-- izitoast 样式（可靠 CDN） -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
-    <!-- APlayer 样式（使用 jsdelivr） -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 
     <!-- <script src="./js/Meting.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- IE Out -->
@@ -120,41 +118,9 @@
                             <div class="row rightone" id="rightone">
                                 <div class="col hitokotos">
                                     <div class="hitokoto cards" id="hitokoto">
-                                        <!--切换音乐-->
-                                        <div class="open-music fixed-top" id="open-music">
-                                            <i class="fa-solid fa-compact-disc"></i>
-                                            <span>&nbsp;background music</span>
-                                        </div>
                                         <div class="hitokoto-all">
                                             <div class="hitokoto-text"><span
                                                     id="hitokoto_text">谢谢你教会我关于爱的命题。</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--音乐-->
-                                    <div class="music" id="music">
-                                        <div class="music-all">
-                                            <div class="music-button">
-                                                <div id="music-open">音乐列表</div>
-                                                <div id="music-close">back</div>
-                                            </div>
-                                            <div class="music-control">
-                                                <i class="fa-solid fa-backward-step" id="last"></i>
-                                                <div id="play">
-                                                    <i class="fa-solid fa-play"></i>
-                                                </div>
-                                                <i class="fa-solid fa-forward-step" id="next"></i>
-                                            </div>
-                                            <div class="music-menu">
-                                                <div class="music-text">
-                                                    <span id="music-name">未播放音乐</span>
-                                                </div>
-                                                <div class="music-volume" style="display: none;">
-                                                    <div id="volume-ico">
-                                                        <i class="fa-solid fa-volume-low"></i>
-                                                    </div>
-                                                    <input type="range" min="0" max="1" step="0.01" id="volume">
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -181,14 +147,6 @@
                             <div class="link">
                                 <div class="row">
                                     <div class="col">
-                                        <a id="link-url-1" href="w/" target="_blank">
-                                            <div class="link-card cards">
-                                                <i id="link-icon-1" class="fas fa-palette"></i>
-                                                <span class="link-name" id="link-name-1">关于你</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col 2">
                                         <a id="link-url-2" href="w/" target="_blank">
                                             <div class="link-card cards">
                                                 <i id="link-icon-2" class="fas fa-pen-nib"></i>
@@ -196,7 +154,6 @@
                                             </div>
                                         </a>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -264,29 +221,17 @@
                                     <i class="fa-brands fa-github"></i>
                                 </a>
                             </div>
-                            <!--更多内容-->
-
-                            <!--Aplayer-->
-                            <div class="box-right">
-                                <div id="aplayer">
-                                    <span>音乐播放器加载失败</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
         </main>
         <!-- 版权信息 -->
         <footer id="footer" class="fixed-bottom footer">
-
-            <!-- 歌词显示 -->
-            <div id="lrc"></div>
         </footer>
     </section>
     <!-- JS：先引入依赖（jQuery），然后插件，最后本地脚本 -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- 本地脚本：在依赖加载后引入 -->

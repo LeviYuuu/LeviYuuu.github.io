@@ -4,7 +4,7 @@
     z-index: 999998;
     width: 50%;
     height: 100%;
-    background-color: rgb(81 81 81 / 80%);
+    background-color: rgba(15, 15, 30, 0.92);
     transition: all 0.7s cubic-bezier(0.42, 0, 0, 1.01);
     backdrop-filter: blur(10px);
 }
@@ -77,21 +77,21 @@ div.loaded div.spinner-box {
     left: 0%;
     top: 0%;
     animation: rotate-one 1s linear infinite;
-    border-bottom: 3px solid #EFEFFA;
+    border-bottom: 3px solid rgba(167, 139, 250, 0.7);
 }
 
 .inner.two {
     right: 0%;
     top: 0%;
     animation: rotate-two 1s linear infinite;
-    border-right: 3px solid #EFEFFA;
+    border-right: 3px solid rgba(167, 139, 250, 0.5);
 }
 
 .inner.three {
     right: 0%;
     bottom: 0%;
     animation: rotate-three 1s linear infinite;
-    border-top: 3px solid #EFEFFA;
+    border-top: 3px solid rgba(167, 139, 250, 0.3);
 }
 
 @keyframes rotate-one {

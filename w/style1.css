@@ -1,13 +1,13 @@
 @charset "utf-8";
 
-/* 全局样式 */
+/* ========== 全局样式 ========== */
 html,
 body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #333;
+    background-color: #1a1a2e;
     font-family: 'HarmonyOS_Regular', sans-serif;
 }
 
@@ -25,241 +25,325 @@ a:hover {
     color: white;
 }
 
+/* ========== 背景层 ========== */
 .bg-all {
     position: fixed;
-    /* 或者 absolute/fixed，取决于你的布局需求 */
     width: 100%;
     height: 100vh;
-    /* 或者 height: 100%;，但父元素需要有明确的高度 */
     overflow: hidden;
-    /* 防止内容溢出 */
+    z-index: 0;
 }
 
 #bg {
     width: 100%;
-    height: auto;
-    /* 或者指定一个高度，但通常使用 auto 更好 */
+    height: 100%;
+    object-fit: cover;
     display: block;
-    /* 消除图片底部的间隙 */
+    filter: brightness(0.6) saturate(1.1);
 }
 
-/* 画作条目样式 */
-.entry {
-    background: rgb(0 0 0 / 25%);
-    backdrop-filter: blur(5px);
-    padding: 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 6px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-    word-wrap: break-word;
-}
-
-.entry h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.entry p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-
-/* 画作图片样式 */
-.painting-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-/* 页面主体样式 */
+/* ========== 页面主体 ========== */
 section.diary {
     position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
     min-height: 100vh;
-    /* 使页面内容至少填充整个视口高度 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* 保证页面内容顶部对齐 */
-    opacity: 1;
-    /* 确保页面内容不透明 */
-    backdrop-filter: blur(30px);
-    /* 可选：模糊效果，给页面加点背景模糊 */
     z-index: 1;
-    /* 日记条目层级高于背景 */
-    padding: 20px;
+    padding: 40px 20px 60px;
     box-sizing: border-box;
-    /* 确保padding不会使布局变形 */
 }
 
-/* 页头 */
+/* ========== 页头 ========== */
 header {
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 12px;
     text-align: center;
-    font-size: 2rem;
-    color: #fff;
 }
 
-/* 日记条目样式 */
-.entry {
-    background: rgb(0 0 0 / 25%);
-    backdrop-filter: blur(30px);
-    /* 日记条目背景模糊效果 */
-    padding: 20px;
-    margin-bottom: 1.5rem;
-    border-radius: 6px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-    word-wrap: break-word;
-    /* 强制文本换行 */
-}
-
-.entry h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.entry p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* 返回首页按钮 */
-footer {
-    text-align: center;
-    height: 60px;
-    /* 增加按钮区域高度 */
-    backdrop-filter: blur(0px);
-    /* 页脚模糊效果 */
-    /*background: rgba(0, 0, 0, 0.3); /* 更柔和的背景 */
-    margin-top: 20px;
-    /* 将按钮位置稍微下移 */
-}
-
-footer p {
-    color: #efefef;
-    font-size: 1.1rem;
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
-    padding: 0;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 美化返回首页按钮 */
-.back-to-home {
-    display: inline-block;
-    background-color: #808080;
-    /* 墨绿色背景 */
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 12px 25px;
-    border-radius: 30px;
-    /* 圆角效果 */
-    text-decoration: none;
-    border: none;
-    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 8px 15px rgba(0, 100, 0, 0.3);
-    /* 墨绿色阴影 */
+header .header-sub {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin-top: 10px;
+    letter-spacing: 2px;
 }
 
-.back-to-home:hover {
-    background-color: #808100;
-    /* 墨绿色在悬停时更深 */
-    transform: translateY(-5px);
-    /* 悬停时上浮 */
-    box-shadow: 0 12px 20px rgba(0, 100, 0, 0.4);
-    /* 增强阴影 */
-}
-
-.back-to-home:active {
-    transform: translateY(2px);
-    /* 按下时下移 */
-    box-shadow: 0 4px 8px rgba(0, 100, 0, 0.2);
-    /* 按下时阴影变小 */
-}
-
-.back-to-home:focus {
-    outline: none;
-    /* 去掉聚焦时的默认外边框 */
-}
-
-/* ========== 日记列表容器 ========== */
-#diaryList {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* ========== 写日记按钮 ========== */
+/* ========== 操作栏 ========== */
 .diary-actions {
-    width: 80%;
-    max-width: 800px;
-    margin-bottom: 1.5rem;
-    text-align: right;
+    width: 100%;
+    max-width: 680px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .btn-new-diary {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(10px);
-    color: #efefef;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    padding: 10px 24px;
-    font-size: 1.05rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 28px;
+    font-size: 0.95rem;
     border-radius: 30px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-    letter-spacing: 1px;
+    transition: all 0.35s ease;
+    letter-spacing: 2px;
 }
 
 .btn-new-diary:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn-new-diary:active {
-    transform: translateY(1px);
+    transform: translateY(0);
 }
 
-/* ========== 用户新增的日记条目 ========== */
-.entry-user {
+/* ========== 同步状态 ========== */
+.sync-status {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-right: 14px;
+    vertical-align: middle;
+}
+
+.sync-status.sync-error {
+    color: #ff8a8a;
+}
+
+/* ========== 时间线容器 ========== */
+#diaryList {
     position: relative;
-    border-left: 3px solid rgba(255, 255, 255, 0.35);
+    width: 100%;
+    max-width: 680px;
+    padding-left: 36px;
 }
 
+/* 时间线竖线 */
+#diaryList::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.18) 5%,
+        rgba(255, 255, 255, 0.18) 95%,
+        transparent 100%
+    );
+}
+
+/* ========== 时间线节点（日记条目） ========== */
+.timeline-node {
+    position: relative;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeSlideIn 0.6s ease forwards;
+}
+
+/* 时间线圆点 */
+.timeline-node::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 22px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.timeline-node:hover::before {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15), 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+/* 用户新增条目的圆点样式 */
+.timeline-node.entry-user::before {
+    background: rgba(167, 139, 250, 0.7);
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+}
+
+.timeline-node.entry-user:hover::before {
+    background: rgba(167, 139, 250, 1);
+    box-shadow: 0 0 0 5px rgba(167, 139, 250, 0.2), 0 0 12px rgba(167, 139, 250, 0.3);
+}
+
+/* ========== 日记卡片 ========== */
+.entry {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 28px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    word-wrap: break-word;
+    transition: all 0.35s ease;
+    position: relative;
+}
+
+.entry:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    transform: translateX(4px);
+}
+
+/* 用户新增条目左边框 */
+.entry-user .entry {
+    border-left: 2px solid rgba(167, 139, 250, 0.4);
+}
+
+.entry-user:hover .entry {
+    border-left-color: rgba(167, 139, 250, 0.7);
+}
+
+/* ========== 日记标题 ========== */
+.entry h2 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 16px 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ========== 日记内容 ========== */
+.entry p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.78);
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+/* 画作图片 */
+.painting-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 16px;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+}
+
+.painting-image:hover {
+    opacity: 1;
+}
+
+/* ========== 删除按钮 ========== */
 .btn-delete {
     position: absolute;
-    top: 12px;
-    right: 14px;
+    top: 16px;
+    right: 16px;
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 1.3rem;
     cursor: pointer;
     line-height: 1;
     padding: 4px 8px;
-    border-radius: 4px;
-    transition: color 0.2s, background 0.2s;
+    border-radius: 6px;
+    transition: all 0.25s ease;
 }
 
 .btn-delete:hover {
     color: #ff6b6b;
-    background: rgba(255, 107, 107, 0.12);
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* ========== 渐入动画 ========== */
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 逐条延迟出现 */
+.timeline-node:nth-child(1) { animation-delay: 0.05s; }
+.timeline-node:nth-child(2) { animation-delay: 0.1s; }
+.timeline-node:nth-child(3) { animation-delay: 0.15s; }
+.timeline-node:nth-child(4) { animation-delay: 0.2s; }
+.timeline-node:nth-child(5) { animation-delay: 0.25s; }
+.timeline-node:nth-child(6) { animation-delay: 0.3s; }
+.timeline-node:nth-child(7) { animation-delay: 0.35s; }
+.timeline-node:nth-child(8) { animation-delay: 0.4s; }
+.timeline-node:nth-child(9) { animation-delay: 0.45s; }
+.timeline-node:nth-child(10) { animation-delay: 0.5s; }
+
+/* 第10条之后统一延迟 */
+.timeline-node:nth-child(n+11) {
+    animation-delay: 0.55s;
+}
+
+/* ========== 返回首页 ========== */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-bottom: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.back-to-home {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+    padding: 10px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    transition: all 0.35s ease;
+    letter-spacing: 2px;
+}
+
+.back-to-home:hover {
+    color: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-home:active {
+    transform: translateY(0);
 }
 
 /* ========== 弹窗遮罩 ========== */
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -276,16 +360,17 @@ footer p {
 
 /* ========== 弹窗主体 ========== */
 .modal-box {
-    background: rgba(40, 40, 40, 0.92);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
+    background: rgba(30, 30, 42, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
     width: 90%;
-    max-width: 560px;
+    max-width: 520px;
     padding: 0;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     transform: translateY(20px) scale(0.97);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .modal-overlay.active .modal-box {
@@ -296,20 +381,22 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 24px 12px;
+    padding: 24px 28px 16px;
 }
 
 .modal-header h2 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
+    font-weight: 400;
     margin: 0;
-    color: #efefef;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 2px;
 }
 
 .modal-close {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.6rem;
     cursor: pointer;
     line-height: 1;
     padding: 0;
@@ -317,22 +404,22 @@ footer p {
 }
 
 .modal-close:hover {
-    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .modal-body {
-    padding: 0 24px 12px;
+    padding: 0 28px 16px;
 }
 
 .modal-input,
 .modal-textarea {
     width: 100%;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     color: #efefef;
-    font-size: 1rem;
-    padding: 12px 14px;
+    font-size: 0.95rem;
+    padding: 13px 16px;
     margin-bottom: 12px;
     outline: none;
     transition: border-color 0.2s, background 0.2s;
@@ -343,19 +430,19 @@ footer p {
 
 .modal-input:focus,
 .modal-textarea:focus {
-    border-color: rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(167, 139, 250, 0.5);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .modal-textarea {
     resize: vertical;
-    min-height: 140px;
-    line-height: 1.6;
+    min-height: 150px;
+    line-height: 1.7;
 }
 
 .modal-hint {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.28);
     margin: 0 0 4px;
 }
 
@@ -363,36 +450,39 @@ footer p {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
-    padding: 12px 24px 20px;
+    padding: 12px 28px 24px;
 }
 
 .btn-cancel,
 .btn-save {
-    padding: 10px 24px;
-    border-radius: 8px;
+    padding: 10px 26px;
+    border-radius: 10px;
     border: none;
-    font-size: 1rem;
+    font-size: 0.95rem;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
+    transition: all 0.25s ease;
+    letter-spacing: 1px;
 }
 
 .btn-cancel {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-cancel:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .btn-save {
-    background: rgba(255, 255, 255, 0.18);
-    color: #fff;
+    background: rgba(167, 139, 250, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(167, 139, 250, 0.3);
 }
 
 .btn-save:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(167, 139, 250, 0.4);
+    box-shadow: 0 4px 16px rgba(167, 139, 250, 0.2);
 }
 
 .btn-save:active,
@@ -412,27 +502,97 @@ footer p {
 }
 
 .password-hint-reject {
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.92rem;
     font-style: italic;
     letter-spacing: 1px;
 }
 
-/* ========== 同步状态 ========== */
-.sync-status {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.45);
-    margin-right: 12px;
-    vertical-align: middle;
+/* ========== 滚动条 ========== */
+::-webkit-scrollbar {
+    width: 4px;
 }
 
-.sync-status.sync-error {
-    color: #ff8a8a;
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-/* ========== 操作栏对齐调整 ========== */
-.diary-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ========== 移动端适配 ========== */
+@media (max-width: 640px) {
+    section.diary {
+        padding: 20px 12px 40px;
+    }
+
+    header {
+        margin-top: 24px;
+    }
+
+    header h1 {
+        font-size: 1.35rem;
+        letter-spacing: 2px;
+    }
+
+    .diary-actions {
+        max-width: 100%;
+        padding: 0 8px;
+    }
+
+    #diaryList {
+        max-width: 100%;
+        padding-left: 28px;
+    }
+
+    #diaryList::before {
+        left: 5px;
+    }
+
+    .timeline-node::before {
+        left: -26px;
+        width: 7px;
+        height: 7px;
+        top: 20px;
+    }
+
+    .entry {
+        padding: 20px 18px;
+        border-radius: 10px;
+    }
+
+    .entry h2 {
+        font-size: 0.8rem;
+    }
+
+    .entry p {
+        font-size: 0.92rem;
+        line-height: 1.75;
+    }
+
+    .entry:hover {
+        transform: none;
+    }
+
+    .btn-delete {
+        top: 12px;
+        right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .modal-box {
+        width: 94%;
+        border-radius: 14px;
+    }
+
+    .back-to-home {
+        font-size: 0.85rem;
+        padding: 8px 20px;
+    }
 }

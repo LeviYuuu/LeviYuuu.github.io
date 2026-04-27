@@ -1,12 +1,10 @@
 @charset "utf-8";
 
-/*小于1400px时*/
+/* 小于1400px时 */
 @media (max-width: 1400px) {}
 
-/*小于1200px时*/
+/* 小于1200px时 */
 @media (max-width: 1200px) {
-
-    /*总布局*/
     .container,
     .container-lg,
     .container-md,
@@ -17,13 +15,10 @@
     .weekday {
         display: none;
     }
-
 }
 
-/*小于992px时*/
+/* 小于992px时 */
 @media (max-width: 992px) {
-
-    /*总布局*/
     .container,
     .container-lg,
     .container-md,
@@ -39,22 +34,22 @@
         margin-left: 0.75rem;
     }
 
-    /*一言*/
+    /* 一言隐藏 */
     .col.hitokotos {
         display: none;
     }
 
-    /*时间卡片*/
+    /* 时间卡片 */
     .col.times {
         margin-left: 0rem;
     }
 
-    /*日期显示*/
+    /* 日期显示 */
     .weekday {
         display: inline;
     }
 
-    /*标题文字*/
+    /* 标题文字 */
     .main-img img {
         width: 110px;
     }
@@ -67,7 +62,7 @@
         font-size: 1.75rem;
     }
 
-    /*链接卡片文字*/
+    /* 链接卡片文字 */
     span.link-name {
         display: none !important;
     }
@@ -78,11 +73,8 @@
     }
 }
 
-/*小于840px时*/
+/* 小于840px时 */
 @media (max-width: 840px) {
-
-
-    /*社交链接*/
     .social {
         max-width: 100%;
         justify-content: center;
@@ -97,19 +89,15 @@
     }
 }
 
-/*小于789px时*/
+/* 小于789px时 */
 @media (max-width: 789px) {
-
-    /*标题文字*/
     span.img-text {
         display: none;
     }
 }
 
-/*小于768px时*/
+/* 小于768px时 */
 @media (max-width: 768px) {
-
-    /*标题文字*/
     .main-img img {
         width: 100px;
     }
@@ -119,47 +107,33 @@
     }
 }
 
-/*小于720px时*/
+/* 小于720px时 */
 @media (max-width: 720px) {
-
-    /*左侧栏高度*/
     .main-left {
         transform: translateY(20px);
     }
 
-    /*左侧栏边距*/
     .col.left {
         margin-right: 0rem;
     }
 
-    /*右侧栏隐藏*/
     .col.right {
         display: none;
     }
 
-    /*右侧栏边距*/
     .col.right {
         margin-left: 0rem;
     }
 
-    /*标题文字*/
     span.img-text {
         display: inline;
     }
 
-    /*简介*/
     .message {
         max-width: 100%;
         pointer-events: none;
     }
 
-    /*
-    .des {
-        justify-content: space-between;
-    }
-    */
-
-    /*链接卡片*/
     .link-card {
         height: 80px !important;
         align-items: center !important;
@@ -170,6 +144,16 @@
     .link-card i {
         font-size: 1.25rem;
         margin: 4px 0px;
+    }
+
+    .link-card::before {
+        /* 移动端隐藏左边装饰线，改为底部 */
+        left: 20%;
+        right: 20%;
+        top: auto;
+        bottom: 0;
+        width: auto;
+        height: 2px;
     }
 
     i.iconfont.icon-a-daohangzhiyindingwei-05,
@@ -191,7 +175,7 @@
         font-size: 1.05rem;
     }
 
-    /*菜单栏按钮*/
+    /* 菜单栏按钮 */
     .menu {
         display: flex;
         justify-content: center;
@@ -201,9 +185,10 @@
 
     .munu-button {
         padding: 5px 20px;
-        background: rgb(0 0 0 / 20%);
-        backdrop-filter: blur(10px);
-        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 30px;
         font-size: 1.25rem;
         transition: 0.5s;
         width: 60px;
@@ -211,14 +196,20 @@
         justify-content: center;
         align-items: center;
         height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /*页脚文字*/
+    .munu-button:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* 页脚文字 */
     footer {
         font-size: 0.85rem;
     }
 
-    /*一言*/
+    /* 一言 */
     .col.hitokotos {
         margin-right: 0rem;
     }
@@ -228,21 +219,28 @@
         font-size: 1.05rem;
     }
 
-    /*隐藏鼠标样式*/
+    /* 隐藏鼠标样式 */
     #cursor {
         background: transparent !important;
     }
 
-}
-
-/*小于512px时*/
-@media (max-width: 512px) {
-    #made {
+    #g-pointer-2 {
         display: none;
     }
 }
 
-/*小于390px时*/
+/* 小于512px时 */
+@media (max-width: 512px) {
+    #made {
+        display: none;
+    }
+
+    .img-title-big {
+        font-size: 3.5rem;
+    }
+}
+
+/* 小于390px时 */
 @media (max-width: 390px) {
     .main-img img {
         display: none;
@@ -251,15 +249,18 @@
     #beian {
         display: none;
     }
+
+    .img-title-big {
+        font-size: 3rem;
+    }
 }
 
 /* 大于568px时 */
 @media (min-width: 568px) {
     .iziToast {
-        border-radius: 30px !important;
+        border-radius: 14px !important;
     }
 }
-
 
 /* 大于720px时 */
 @media (min-width: 720px) {
@@ -270,8 +271,6 @@
 
 /* 大于992px时 */
 @media (min-width: 992px) {
-
-    /*时钟显示*/
     span#win_text,
     span#win_speed {
         display: none;
@@ -280,18 +279,13 @@
 
 /* 大于1400px时 */
 @media (min-width: 1400px) {
-
-    /*时钟显示*/
     span#win_text,
     span#win_speed {
         display: inline !important;
     }
 }
 
-
-/*
-菜单按钮
-*/
+/* ===== 菜单按钮状态 ===== */
 .menus .col.left {
     display: none;
 }
@@ -302,7 +296,6 @@
     padding: 0rem 0.75rem;
 }
 
-/*功能区调整*/
 .menus .col.hitokotos {
     display: block;
 }
@@ -311,7 +304,6 @@
     display: none;
 }
 
-/*边界布局*/
 .menus .row {
     --bs-gutter-x: 0rem;
 }
@@ -328,44 +320,16 @@
     font-size: 1.75rem;
 }
 
-/*第二屏logo*/
+/* 第二屏logo */
 .logo-text {
     font-family: 'Pacifico-Regular' !important;
+    background: linear-gradient(135deg, #efefef 30%, rgba(167, 139, 250, 0.7));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-/*切换动画*/
-/*
-.hitokoto,
-.time,
-.link-card,
-.message {
-    animation: fade-in;
-    -webkit-animation: fade-in 0.5s;
-    -moz-animation: fade-in 0.5s;
-    -o-animation: fade-in 0.5s;
-    -ms-animation: fade-in 0.5s;
-}
-*/
-.logo,
-.line,
-.main-img,
-.social,
-.close,
-.hitokoto,
-.time,
-.link-card,
-.message,
-#link-text {
-    animation: fade 0.5;
-    -webkit-animation: fade 0.5s;
-    -moz-animation: fade 0.5s;
-    -o-animation: fade 0.5s;
-    -ms-animation: fade 0.5s;
-}
-
-/*
-移动端功能区切换
-*/
+/* 移动端功能区切换 */
 .mobile .col.hitokotos {
     display: none;
 }

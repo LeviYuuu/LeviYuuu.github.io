@@ -110,13 +110,18 @@
         if (e.target === pwOverlay) closePasswordModal();
     });
 
-    // ========== 渲染单条日记 ==========
+    // ========== 渲染单条日记（时间线节点） ==========
     function createEntryElement(entry, isUserEntry, index) {
+        // 外层时间线节点
+        var node = document.createElement('div');
+        node.className = 'timeline-node';
+        if (isUserEntry) {
+            node.classList.add('entry-user');
+        }
+
+        // 内层日记卡片
         var article = document.createElement('article');
         article.className = 'entry';
-        if (isUserEntry) {
-            article.classList.add('entry-user');
-        }
 
         var inner = '';
         if (entry.title) {
@@ -130,7 +135,8 @@
         }
 
         article.innerHTML = inner;
-        return article;
+        node.appendChild(article);
+        return node;
     }
 
     // ========== 渲染所有日记 ==========

@@ -1,89 +1,116 @@
-/*模糊渐入动画*/
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(10px);
-    }
-}
-
-@-webkit-keyframes fade-in {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(10px);
-    }
-}
-
-@-moz-keyframes fade-in {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(10px);
-    }
-}
-
-@-o-keyframes fade-in {
-    0% {
-        opacity: 0;
-        backdrop-filter: blur(0px);
-    }
-
-    100% {
-        opacity: 1;
-        backdrop-filter: blur(10px);
-    }
-}
-
-/*渐入动画*/
+/* ===== 渐入动画 ===== */
 @keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @-webkit-keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @-moz-keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 @-o-keyframes fade {
-    0% {
-        opacity: 0;
-    }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
 
-    100% {
+/* ===== 模糊渐入动画 ===== */
+@keyframes fade-in {
+    0% { opacity: 0; backdrop-filter: blur(0px); }
+    100% { opacity: 1; backdrop-filter: blur(10px); }
+}
+
+@-webkit-keyframes fade-in {
+    0% { opacity: 0; backdrop-filter: blur(0px); }
+    100% { opacity: 1; backdrop-filter: blur(10px); }
+}
+
+@-moz-keyframes fade-in {
+    0% { opacity: 0; backdrop-filter: blur(0px); }
+    100% { opacity: 1; backdrop-filter: blur(10px); }
+}
+
+@-o-keyframes fade-in {
+    0% { opacity: 0; backdrop-filter: blur(0px); }
+    100% { opacity: 1; backdrop-filter: blur(10px); }
+}
+
+/* ===== 向上滑入 ===== */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
+
+/* ===== 从左侧滑入 ===== */
+@keyframes fadeSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ===== 微妙浮动 ===== */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+
+/* ===== 脉冲光晕 ===== */
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.1); }
+    50% { box-shadow: 0 0 30px rgba(167, 139, 250, 0.25); }
+}
+
+/* ===== 通用元素切换动画 ===== */
+/* 只对没有自定义 anim-* 类的元素生效 */
+.logo:not([class*="anim-"]),
+.line:not([class*="anim-"]),
+.main-img:not([class*="anim-"]),
+.social:not([class*="anim-"]),
+.close:not([class*="anim-"]),
+.hitokoto:not([class*="anim-"]),
+.time:not([class*="anim-"]),
+.link-card:not([class*="anim-"]),
+.message:not([class*="anim-"]),
+#link-text:not([class*="anim-"]) {
+    animation: fade 0.5s;
+    -webkit-animation: fade 0.5s;
+    -moz-animation: fade 0.5s;
+    -o-animation: fade 0.5s;
+    -ms-animation: fade 0.5s;
+}
+
+/* ===== 交错出场动画类 ===== */
+.anim-fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeSlideUp 0.6s ease forwards !important;
+}
+
+.anim-fade-right {
+    opacity: 0;
+    transform: translateX(-24px);
+    animation: fadeSlideRight 0.6s ease forwards !important;
+}
+
+/* 延迟序列 */
+.anim-delay-1 { animation-delay: 0.1s !important; }
+.anim-delay-2 { animation-delay: 0.2s !important; }
+.anim-delay-3 { animation-delay: 0.35s !important; }
+.anim-delay-4 { animation-delay: 0.5s !important; }
+.anim-delay-5 { animation-delay: 0.65s !important; }

@@ -41,14 +41,14 @@ window.addEventListener('load', function () {
 
     //载入动画
     $('#loading-box').attr('class', 'loaded');
-    $('#bg').css("cssText", "transform: scale(1);filter: blur(0px);transition: ease 1.5s;");
+    $('#bg').css("cssText", "transform: scale(1);filter: blur(10px) brightness(0.55) saturate(1.2);transition: ease 1.5s;");
     $('.cover').css("cssText", "opacity: 1;transition: ease 1.5s;");
     $('#section').css("cssText", "transform: scale(1) !important;opacity: 1 !important;filter: blur(0px) !important");
 
-    用户欢迎
+    // 用户欢迎
     setTimeout(function () {
         iziToast.show({
-            timeout: 2500,
+            timeout: 3000,
             icon: false,
             title: hello,
             message: '欢迎来看 关于yuuu和levi。'

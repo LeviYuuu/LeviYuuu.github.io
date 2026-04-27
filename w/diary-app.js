@@ -256,10 +256,6 @@
     });
 
     // ========== 初始化 ==========
-    // 如果 sessionStorage 里有 token（同一标签页内验证过），自动加载远程数据
-    if (DiaryStore.hasToken()) {
-        loadFromRemote();
-    } else {
-        renderAll(); // 未验证只显示默认日记
-    }
+    // 公开仓库无需 token 也能读取，始终加载远程日记
+    loadFromRemote();
 })();

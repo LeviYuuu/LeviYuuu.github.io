@@ -81,21 +81,34 @@ var DiaryStore = (function () {
     }
 
     // ========== 读取远程日记 ==========
-    // 返回 { entries: [...], sha: "..." }
     // sha 用于后续更新时防止冲突
     var _cachedSha = null;
 
+    // 公开仓库无需 token 即可读取
     function loadEntries() {
-        var path = '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
-        return apiRequest('GET', path).then(function (data) {
-            _cachedSha = data.sha;
-            // GitHub 返回的 content 是 base64 编码的
-            var decoded = decodeBase64(data.content);
-            try {
-                return JSON.parse(decoded);
-            } catch (e) {
-                return [];
-            }
+        var url = API_BASE + '/repos/' + REPO_OWNER + '/' + REPO_NAME + '/contents/' + FILE_PATH + '?ref=' + BRANCH;
+        var headers = {
+            'Accept': 'application/vnd.github+json',
+            'X-GitHub-Api-Version': '2022-11-28'
+        };
+        // 如果有 token 就带上（可提高 API 限额），没有也能读
+        var token = getToken();
+        if (token) {
+            headers['Authorization'] = 'Bearer ' + token;
+        }
+        return fetch(url, { headers: headers }).then(function (res) {
+            return res.json().then(function (data) {
+                if (!res.ok) {
+                    return Promise.reject(new Error(data.message || 'GitHub API 错误'));
+                }
+                _cachedSha = data.sha;
+                var decoded = decodeBase64(data.content);
+                try {
+                    return JSON.parse(decoded);
+                } catch (e) {
+                    return [];
+                }
+            });
         }).catch(function (err) {
             // 文件不存在时返回空数组
             if (err.message && err.message.indexOf('Not Found') !== -1) {

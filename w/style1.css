@@ -188,3 +188,251 @@ footer p {
     outline: none;
     /* 去掉聚焦时的默认外边框 */
 }
+
+/* ========== 日记列表容器 ========== */
+#diaryList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========== 写日记按钮 ========== */
+.diary-actions {
+    width: 80%;
+    max-width: 800px;
+    margin-bottom: 1.5rem;
+    text-align: right;
+}
+
+.btn-new-diary {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    color: #efefef;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 10px 24px;
+    font-size: 1.05rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn-new-diary:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.btn-new-diary:active {
+    transform: translateY(1px);
+}
+
+/* ========== 用户新增的日记条目 ========== */
+.entry-user {
+    position: relative;
+    border-left: 3px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-delete {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.4rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.btn-delete:hover {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.12);
+}
+
+/* ========== 弹窗遮罩 ========== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ========== 弹窗主体 ========== */
+.modal-box {
+    background: rgba(40, 40, 40, 0.92);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 560px;
+    padding: 0;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 12px;
+}
+
+.modal-header h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: #efefef;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: #fff;
+}
+
+.modal-body {
+    padding: 0 24px 12px;
+}
+
+.modal-input,
+.modal-textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #efefef;
+    font-size: 1rem;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+    user-select: text;
+}
+
+.modal-input:focus,
+.modal-textarea:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.modal-textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+.modal-hint {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.35);
+    margin: 0 0 4px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 12px 24px 20px;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.btn-save {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.btn-save:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-save:active,
+.btn-cancel:active {
+    transform: scale(0.97);
+}
+
+/* ========== 密码确认弹窗 ========== */
+.password-box {
+    max-width: 380px;
+}
+
+.password-hint {
+    font-size: 0.85rem;
+    color: #ff8a8a;
+    margin: 4px 0 0;
+}
+
+.password-hint-reject {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.95rem;
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+/* ========== 同步状态 ========== */
+.sync-status {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.sync-status.sync-error {
+    color: #ff8a8a;
+}
+
+/* ========== 操作栏对齐调整 ========== */
+.diary-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

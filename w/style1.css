@@ -255,14 +255,44 @@ header .header-sub {
     opacity: 1;
 }
 
-/* ========== 删除按钮 ========== */
-.btn-delete {
+/* ========== 操作按钮容器 ========== */
+.entry-actions {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.entry:hover .entry-actions {
+    opacity: 1;
+}
+
+/* ========== 编辑按钮 ========== */
+.btn-edit {
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 1.05rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 7px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+.btn-edit:hover {
+    color: rgba(167, 139, 250, 0.9);
+    background: rgba(167, 139, 250, 0.1);
+}
+
+/* ========== 删除按钮 ========== */
+.btn-delete {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.25);
     font-size: 1.3rem;
     cursor: pointer;
     line-height: 1;
@@ -580,9 +610,17 @@ footer p {
         transform: none;
     }
 
-    .btn-delete {
+    .entry-actions {
+        opacity: 1;
         top: 12px;
         right: 10px;
+    }
+
+    .btn-edit {
+        font-size: 0.95rem;
+    }
+
+    .btn-delete {
         font-size: 1.2rem;
     }
 

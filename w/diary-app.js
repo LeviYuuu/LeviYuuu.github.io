@@ -5,9 +5,11 @@
     var remoteEntries = [];     // 从 GitHub 加载的用户日记
     var isSaving = false;       // 防止重复保存
     var pendingAction = null;   // 密码验证通过后要执行的回调
+    var editingIndex = -1;      // 正在编辑的日记索引，-1 表示新建模式
 
     // ========== DOM 引用 ==========
     var overlay = document.getElementById('modalOverlay');
+    var modalTitle = document.getElementById('modalTitle');
     var btnNew = document.getElementById('btnNewDiary');
     var btnClose = document.getElementById('modalClose');
     var btnCancel = document.getElementById('btnCancel');
@@ -129,9 +131,12 @@
         }
         inner += '<p>' + entry.content + '</p>';
 
-        // 用户日记始终显示删除按钮
+        // 用户日记显示编辑和删除按钮
         if (isUserEntry) {
+            inner += '<div class="entry-actions">';
+            inner += '<button class="btn-edit" data-index="' + index + '" title="编辑这篇日记">&#9998;</button>';
             inner += '<button class="btn-delete" data-index="' + index + '" title="删除这篇日记">&times;</button>';
+            inner += '</div>';
         }
 
         article.innerHTML = inner;
@@ -154,6 +159,20 @@
         }
 
         bindDeleteButtons();
+        bindEditButtons();
+    }
+
+    // ========== 编辑日记 ==========
+    function bindEditButtons() {
+        var buttons = document.querySelectorAll('.btn-edit');
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                var idx = parseInt(this.getAttribute('data-index'), 10);
+                requireAuth(function () {
+                    openModalForEdit(idx);
+                });
+            });
+        }
     }
 
     // ========== 删除日记 ==========
@@ -200,14 +219,30 @@
 
     // ========== 写日记弹窗控制 ==========
     function openModal() {
+        editingIndex = -1;
+        modalTitle.textContent = '写一篇日记';
+        btnSave.textContent = '保存';
         overlay.classList.add('active');
         inputTitle.value = '';
         inputContent.value = '';
         inputTitle.focus();
     }
 
+    function openModalForEdit(idx) {
+        editingIndex = idx;
+        var entry = remoteEntries[idx];
+        modalTitle.textContent = '编辑日记';
+        btnSave.textContent = '更新';
+        overlay.classList.add('active');
+        inputTitle.value = entry.title || '';
+        // 把 HTML 中的 <br> 还原回换行符供编辑
+        inputContent.value = (entry.content || '').replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+        inputTitle.focus();
+    }
+
     function closeModal() {
         overlay.classList.remove('active');
+        editingIndex = -1;
     }
 
     // 点击"写日记"按钮：先验证密码，再打开弹窗
@@ -243,16 +278,26 @@
 
         var htmlContent = escapeHTML(content).replace(/\n/g, '<br>');
 
-        var newEntry = {
-            title: title,
-            content: htmlContent,
-            createdAt: new Date().toISOString()
-        };
-
-        remoteEntries.unshift(newEntry);
-        closeModal();
-        renderAll();
-        saveToRemote('新增日记: ' + (title || '无标题'));
+        if (editingIndex >= 0 && editingIndex < remoteEntries.length) {
+            // 编辑模式：更新已有条目
+            remoteEntries[editingIndex].title = title;
+            remoteEntries[editingIndex].content = htmlContent;
+            remoteEntries[editingIndex].updatedAt = new Date().toISOString();
+            closeModal();
+            renderAll();
+            saveToRemote('编辑日记: ' + (title || '无标题'));
+        } else {
+            // 新建模式
+            var newEntry = {
+                title: title,
+                content: htmlContent,
+                createdAt: new Date().toISOString()
+            };
+            remoteEntries.unshift(newEntry);
+            closeModal();
+            renderAll();
+            saveToRemote('新增日记: ' + (title || '无标题'));
+        }
     });
 
     // ========== 初始化 ==========

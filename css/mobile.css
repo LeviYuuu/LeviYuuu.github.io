@@ -323,7 +323,7 @@
 /* 第二屏logo */
 .logo-text {
     font-family: 'Pacifico-Regular' !important;
-    background: linear-gradient(135deg, #efefef 30%, rgba(167, 139, 250, 0.7));
+    background: linear-gradient(135deg, #efefef 30%, rgba(74, 222, 128, 0.7));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

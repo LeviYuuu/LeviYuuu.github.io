@@ -182,13 +182,13 @@ header .header-sub {
 
 /* 用户新增条目的圆点样式 */
 .timeline-node.entry-user::before {
-    background: rgba(167, 139, 250, 0.7);
-    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
+    background: rgba(74, 222, 128, 0.7);
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
 }
 
 .timeline-node.entry-user:hover::before {
-    background: rgba(167, 139, 250, 1);
-    box-shadow: 0 0 0 5px rgba(167, 139, 250, 0.2), 0 0 12px rgba(167, 139, 250, 0.3);
+    background: rgba(74, 222, 128, 1);
+    box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.2), 0 0 12px rgba(74, 222, 128, 0.3);
 }
 
 /* ========== 日记卡片 ========== */
@@ -214,11 +214,11 @@ header .header-sub {
 
 /* 用户新增条目左边框 */
 .entry-user .entry {
-    border-left: 2px solid rgba(167, 139, 250, 0.4);
+    border-left: 2px solid rgba(74, 222, 128, 0.4);
 }
 
 .entry-user:hover .entry {
-    border-left-color: rgba(167, 139, 250, 0.7);
+    border-left-color: rgba(74, 222, 128, 0.7);
 }
 
 /* ========== 日记标题 ========== */
@@ -284,8 +284,8 @@ header .header-sub {
 }
 
 .btn-edit:hover {
-    color: rgba(167, 139, 250, 0.9);
-    background: rgba(167, 139, 250, 0.1);
+    color: rgba(74, 222, 128, 0.9);
+    background: rgba(74, 222, 128, 0.1);
 }
 
 /* ========== 删除按钮 ========== */
@@ -460,7 +460,7 @@ footer p {
 
 .modal-input:focus,
 .modal-textarea:focus {
-    border-color: rgba(167, 139, 250, 0.5);
+    border-color: rgba(74, 222, 128, 0.5);
     background: rgba(255, 255, 255, 0.08);
 }
 
@@ -505,14 +505,14 @@ footer p {
 }
 
 .btn-save {
-    background: rgba(167, 139, 250, 0.25);
+    background: rgba(74, 222, 128, 0.25);
     color: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    border: 1px solid rgba(74, 222, 128, 0.3);
 }
 
 .btn-save:hover {
-    background: rgba(167, 139, 250, 0.4);
-    box-shadow: 0 4px 16px rgba(167, 139, 250, 0.2);
+    background: rgba(74, 222, 128, 0.4);
+    box-shadow: 0 4px 16px rgba(74, 222, 128, 0.2);
 }
 
 .btn-save:active,

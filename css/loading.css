@@ -77,21 +77,21 @@ div.loaded div.spinner-box {
     left: 0%;
     top: 0%;
     animation: rotate-one 1s linear infinite;
-    border-bottom: 3px solid rgba(167, 139, 250, 0.7);
+    border-bottom: 3px solid rgba(74, 222, 128, 0.7);
 }
 
 .inner.two {
     right: 0%;
     top: 0%;
     animation: rotate-two 1s linear infinite;
-    border-right: 3px solid rgba(167, 139, 250, 0.5);
+    border-right: 3px solid rgba(74, 222, 128, 0.5);
 }
 
 .inner.three {
     right: 0%;
     bottom: 0%;
     animation: rotate-three 1s linear infinite;
-    border-top: 3px solid rgba(167, 139, 250, 0.3);
+    border-top: 3px solid rgba(74, 222, 128, 0.3);
 }
 
 @keyframes rotate-one {

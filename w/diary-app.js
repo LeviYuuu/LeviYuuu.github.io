@@ -217,15 +217,24 @@
         });
     }
 
+    // ========== 工具：生成日期标题 ==========
+    function getDateTitle() {
+        var now = new Date();
+        var y = now.getFullYear();
+        var m = now.getMonth() + 1;
+        var d = now.getDate();
+        return y + ' ' + m + '.' + d;
+    }
+
     // ========== 写日记弹窗控制 ==========
     function openModal() {
         editingIndex = -1;
         modalTitle.textContent = '写一篇日记';
         btnSave.textContent = '保存';
         overlay.classList.add('active');
-        inputTitle.value = '';
+        inputTitle.value = getDateTitle();
         inputContent.value = '';
-        inputTitle.focus();
+        inputContent.focus();
     }
 
     function openModalForEdit(idx) {

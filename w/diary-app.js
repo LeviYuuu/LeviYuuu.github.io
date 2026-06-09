@@ -254,6 +254,17 @@
         editingIndex = -1;
     }
 
+    // 带确认的关闭：如果正在编辑且有内容，先二次确认，避免误丢文字
+    function tryCloseModal() {
+        var hasContent = (inputTitle.value.trim() || inputContent.value.trim());
+        if (hasContent) {
+            if (!confirm('当前内容尚未保存，确定要关闭吗？')) {
+                return;
+            }
+        }
+        closeModal();
+    }
+
     // 点击"写日记"按钮：先验证密码，再打开弹窗
     btnNew.addEventListener('click', function () {
         requireAuth(function () {
@@ -261,16 +272,17 @@
         });
     });
 
-    btnClose.addEventListener('click', closeModal);
-    btnCancel.addEventListener('click', closeModal);
+    btnClose.addEventListener('click', tryCloseModal);
+    btnCancel.addEventListener('click', tryCloseModal);
 
+    // 点击弹窗外的空白处不再关闭，避免正在写的内容丢失
     overlay.addEventListener('click', function (e) {
-        if (e.target === overlay) closeModal();
+        // 故意留空：写日记弹窗只能通过 取消/×/保存 主动关闭
     });
 
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
-            if (overlay.classList.contains('active')) closeModal();
+            if (overlay.classList.contains('active')) tryCloseModal();
             if (pwOverlay.classList.contains('active')) closePasswordModal();
         }
     });
